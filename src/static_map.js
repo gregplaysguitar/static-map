@@ -55,9 +55,9 @@ core.StaticMap = $.Class.extend({
         for (var m=0; m < this.markers.length; m++) {
             markers += this.markers[m].coordinates;
 
-            if (this.markers.length > 1 || center != this.markers[m].coordinates) {
-                markers += ",red" + (parseInt(m) + 1) + "|";
-            }
+			var color = this.markers[m].color ? this.markers[m].color : 'red';
+			var number = (this.markers.length > 1) ? m + 1 : '';
+            markers += "," + color + number + "|";
         }
         
         var url = this.render_template(this.url_template, {
